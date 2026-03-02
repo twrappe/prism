@@ -1,0 +1,71 @@
+version: '3.9'
+
+services:
+  # Main application service
+  agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: llm-rag-qa-agent
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - CHROMA_DB_PATH=/app/chroma_db
+      - LLM_MODEL=gpt-4-turbo
+      - TEMPERATURE=0.7
+      - MAX_TOKENS=2000
+      - API_HOST=0.0.0.0
+      - API_PORT=8000
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./chroma_db:/app/chroma_db
+      - ./data:/app/data
+      - ./logs:/app/logs
+    ports:
+      - "8000:8000"
+    depends_on:
+      - chromadb
+    networks:
+      - llm-network
+    command: python examples/api_server.py
+
+  # ChromaDB service (optional - if not using embedded)
+  chromadb:
+    image: chromadb/chroma:latest
+    container_name: chromadb-server
+    ports:
+      - "8001:8000"
+    environment:
+      - CHROMA_HOST=0.0.0.0
+      - CHROMA_PORT=8000
+    volumes:
+      - chromadb-data:/data
+    networks:
+      - llm-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/heartbeat"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # Test runner service
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: llm-rag-qa-agent-tests
+    environment:
+      - PYTHONPATH=/app
+    volumes:
+      - ./:/app
+      - /app/.pytest_cache
+    networks:
+      - llm-network
+    command: pytest tests/ -v --cov=src --cov-report=html
+
+networks:
+  llm-network:
+    driver: bridge
+
+volumes:
+  chromadb-data:
+    driver: local

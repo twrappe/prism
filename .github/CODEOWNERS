@@ -1,0 +1,23 @@
+# Repository code ownership and review requirements
+
+# Global owner for everything
+* @yourusername
+
+# Specific owners for different areas
+/src/agents/ @yourusername
+/src/rag/ @yourusername
+/src/utils/ @yourusername
+/tests/ @yourusername
+/docs/ @yourusername
+
+# CI/CD pipeline owner
+/.github/ @yourusername
+/Dockerfile @yourusername
+/docker-compose.yml @yourusername
+/Makefile @yourusername
+
+# Configuration files
+/setup.cfg @yourusername
+/pyproject.toml @yourusername
+/requirements.txt @yourusername
+/.pre-commit-config.yaml @yourusername
