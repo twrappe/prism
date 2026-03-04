@@ -15,4 +15,4 @@ pyyaml==6.0.1
 requests==2.31.0
 loguru==0.7.2
 dataclasses-json==0.6.1
-poetry==1.7.1
+poetry==2.3.2
