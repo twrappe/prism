@@ -10,7 +10,7 @@ services:
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - CHROMA_DB_PATH=/app/chroma_db
-      - LLM_MODEL=gpt-3.5-turbo
+      - LLM_MODEL=gpt-4-turbo
       - TEMPERATURE=0.7
       - MAX_TOKENS=2000
       - API_HOST=0.0.0.0

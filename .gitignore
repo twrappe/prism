@@ -89,6 +89,9 @@ Thumbs.db
 *~
 .#*
 
+# Batch processor output
+farm_batch_results.json
+
 # Pre-commit
 .pre-commit-config.local.yaml
 *.sublime-workspace

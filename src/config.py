@@ -12,7 +12,7 @@ class Settings(BaseSettings):
     
     # OpenAI Configuration
     openai_api_key: str = Field(default="", validation_alias="OPENAI_API_KEY")
-    llm_model: str = Field(default="gpt-3.5-turbo", validation_alias="LLM_MODEL")
+    llm_model: str = Field(default="gpt-4-turbo", validation_alias="LLM_MODEL")
     temperature: float = Field(default=0.7, validation_alias="TEMPERATURE")
     max_tokens: int = Field(default=2000, validation_alias="MAX_TOKENS")
     
@@ -35,6 +35,33 @@ class Settings(BaseSettings):
     # Paths
     logs_dir: str = Field(default="./data/logs")
     docs_dir: str = Field(default="./data/documentation")
+
+    # Distributed / silicon farm scale settings
+    max_concurrent_analyses: int = Field(
+        default=16,
+        validation_alias="MAX_CONCURRENT_ANALYSES",
+        description="Number of concurrent worker coroutines for batch processing",
+    )
+    batch_size: int = Field(
+        default=50,
+        validation_alias="BATCH_SIZE",
+        description="Number of logs to dispatch in a single batch",
+    )
+    job_queue_backend: str = Field(
+        default="memory",
+        validation_alias="JOB_QUEUE_BACKEND",
+        description="Job queue backend: 'memory', 'redis', or 'sqs'",
+    )
+    redis_url: Optional[str] = Field(
+        default=None,
+        validation_alias="REDIS_URL",
+        description="Redis connection URL when job_queue_backend='redis'",
+    )
+    enable_cross_node_correlation: bool = Field(
+        default=True,
+        validation_alias="ENABLE_CROSS_NODE_CORRELATION",
+        description="Aggregate failures across nodes sharing silicon_revision or driver_version",
+    )
 
 
 def get_settings() -> Settings:

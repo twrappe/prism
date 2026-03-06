@@ -2,11 +2,19 @@
 Test suite for CLI/CD QA Agent
 """
 
+import os
 import pytest
 from pathlib import Path
 from src.agents import CIDDQAAgent, RCAgent, RemediationAgent
 from src.rag import RAGPipeline, ChromaDBManager
 from src.utils.parser import parse_ci_cd_logs, LogLevel
+
+# Tests decorated with @requires_openai are skipped when OPENAI_API_KEY is not
+# set (e.g. forks, contributor machines without a key).
+requires_openai = pytest.mark.skipif(
+    not os.getenv("OPENAI_API_KEY"),
+    reason="OPENAI_API_KEY not set",
+)
 
 
 class TestLogParser:
