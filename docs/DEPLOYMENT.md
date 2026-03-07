@@ -12,8 +12,8 @@
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/llm_rag_powered_qa_agent.git
-cd llm_rag_powered_qa_agent
+git clone https://github.com/twrappe/prism.git
+cd prism
 ```
 
 ### 2. Create Virtual Environment

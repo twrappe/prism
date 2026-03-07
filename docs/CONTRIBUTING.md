@@ -1,6 +1,6 @@
 # Contributing Guide
 
-Thank you for interest in contributing to the LLM RAG-Powered CI/CD Failure Analysis Agent!
+Thank you for interest in contributing to PRISM!
 
 ## Getting Started
 
@@ -11,8 +11,8 @@ Click "Fork" on the GitHub repository to create your own copy.
 ### 2. Clone Your Fork
 
 ```bash
-git clone https://github.com/yourusername/llm_rag_powered_qa_agent.git
-cd llm_rag_powered_qa_agent
+git clone https://github.com/twrappe/prism.git
+cd prism
 ```
 
 ### 3. Create a Feature Branch

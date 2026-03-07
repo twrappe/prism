@@ -1,7 +1,7 @@
 .PHONY: help install install-dev test lint format clean run docker-build docker-run pre-commit-install pre-commit-run
 
 help:
-	@echo "LLM RAG-Powered CI/CD Failure Analysis Agent - Development Commands"
+	@echo "PRISM - Development Commands"
 	@echo ""
 	@echo "Setup:"
 	@echo "  make install              Install dependencies"
@@ -76,18 +76,18 @@ test-watch:
 
 # Docker targets
 docker-build:
-	docker build -t llm-rag-qa-agent:latest .
+	docker build -t prism:latest .
 
 docker-run:
 	docker run -it --rm \
 		-e OPENAI_API_KEY=${OPENAI_API_KEY} \
 		-v $(PWD)/chroma_db:/app/chroma_db \
 		-v $(PWD)/data:/app/data \
-		llm-rag-qa-agent:latest
+		prism:latest
 
 docker-test:
-	docker build -f Dockerfile -t llm-rag-qa-agent:test .
-	docker run --rm llm-rag-qa-agent:test pytest tests/ -v
+	docker build -f Dockerfile -t prism:test .
+	docker run --rm prism:test pytest tests/ -v
 
 docker-compose-up:
 	docker-compose up -d

@@ -1,4 +1,4 @@
-# LLM RAG-Powered CI/CD Failure Analysis Agent
+# PRISM — Pipeline Root-cause Intelligence for Silicon & Media
 
 > **Intelligent Root Cause Analysis & Remediation for Silicon Validation & CI/CD Pipelines — At Scale**
 
@@ -264,8 +264,8 @@ When the same root cause appears across multiple nodes in the same batch, the ag
 #### Windows (PowerShell)
 ```powershell
 # Clone the repository
-git clone https://github.com/yourusername/llm_rag_powered_qa_agent.git
-cd llm_rag_powered_qa_agent
+git clone https://github.com/twrappe/prism.git
+cd prism
 
 # Create virtual environment
 python -m venv venv
@@ -280,8 +280,8 @@ pip install -r requirements.txt
 #### macOS/Linux (Bash)
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/llm_rag_powered_qa_agent.git
-cd llm_rag_powered_qa_agent
+git clone https://github.com/twrappe/prism.git
+cd prism
 
 # Create virtual environment
 python -m venv venv
@@ -930,7 +930,7 @@ def get_analysis_cached(log_hash: str, log_content: str):
 ## 📋 Project Structure
 
 ```
-llm_rag_powered_qa_agent/
+prism/
 ├── src/
 │   ├── agents/               # LangChain agents
 │   │   └── __init__.py      # RCAAgent, RemediationAgent, CIDDQAAgent

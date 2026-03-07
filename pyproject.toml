@@ -1,11 +1,12 @@
 [tool.poetry]
-name = "llm-rag-powered-qa-agent"
-version = "1.0.0"
-description = "LLM RAG-Powered CI/CD Failure Analysis Agent with Root Cause Analysis and Remediation"
-authors = ["Your Name <your.email@example.com>"]
+name = "prism"
+version = "0.1.0"
+description = "PRISM — Pipeline Root-cause Intelligence for Silicon & Media"
+authors = ["Thomas Wrappe twrappe@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-repository = "https://github.com/yourusername/llm_rag_powered_qa_agent"
+repository = "https://github.com/twrappe/prism"
+packages = [{include = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"

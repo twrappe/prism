@@ -1,4 +1,4 @@
-# Simple, working Dockerfile for LLM RAG QA Agent
+# Simple, working Dockerfile for PRISM
 # Using single-stage build for reliability
 
 FROM python:3.13-slim

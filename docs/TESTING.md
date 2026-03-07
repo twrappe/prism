@@ -1,6 +1,6 @@
 # Testing Documentation
 
-This document provides comprehensive information about the test suite for the LLM RAG-Powered CI/CD Failure Analysis Agent.
+This document provides comprehensive information about the test suite for PRISM.
 
 ## Overview
 
@@ -250,7 +250,7 @@ tests/test_agents.py::TestRCAAgent::test_initialization PASSED           [100%]
 
 **Solution**: Run tests from the project root directory:
 ```bash
-cd llm_rag_powered_qa_agent
+cd prism
 python -m pytest tests/ -v
 ```
 

@@ -39,7 +39,7 @@ try {
 # 3. BUILD DOCKER IMAGE
 Write-Host "`n[3/5] Building Docker image..." -ForegroundColor Green
 try {
-    $dockerOutput = docker build -t llm-rag-qa-agent:latest . 2>&1
+    $dockerOutput = docker build -t prism:latest . 2>&1
     if ($LASTEXITCODE -eq 0) {
         Write-Host "  OK - Docker image built" -ForegroundColor Green
     } else {

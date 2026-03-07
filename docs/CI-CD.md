@@ -1,6 +1,6 @@
 # CI/CD Configuration & Deployment Guide
 
-This document describes the complete CI/CD setup for the LLM RAG-Powered CI/CD Failure Analysis Agent.
+This document describes the complete CI/CD setup for PRISM.
 
 ## Overview
 
@@ -196,19 +196,19 @@ make clean               # Clean generated files
 
 **Build**:
 ```bash
-docker build -t llm-rag-qa-agent:latest .
+docker build -t prism:latest .
 ```
 
 **Run tests**:
 ```bash
-docker run --rm llm-rag-qa-agent:latest pytest tests/ -v
+docker run --rm prism:latest pytest tests/ -v
 ```
 
 **Run API**:
 ```bash
 docker run -it -p 8000:8000 \
   -e OPENAI_API_KEY=your-key \
-  llm-rag-qa-agent:latest python examples/api_server.py
+  prism:latest python examples/api_server.py
 ```
 
 ### docker-compose.yml
@@ -378,7 +378,7 @@ pre-commit install
 docker system prune -a
 
 # Rebuild
-docker build --no-cache -t llm-rag-qa-agent:latest .
+docker build --no-cache -t prism:latest .
 ```
 
 ### Tests Timeout in CI

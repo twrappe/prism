@@ -2,7 +2,7 @@
 
 ## System Overview
 
-This document details the architecture and workflow of the LLM RAG-Powered CI/CD Failure Analysis Agent.
+This document details the architecture and workflow of PRISM.
 
 ### Core Components
 

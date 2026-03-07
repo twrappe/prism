@@ -1,2 +1,2 @@
-"""LLM RAG-Powered QA Agent for CI/CD Failure Analysis"""
+"""PRISM — Pipeline Root-cause Intelligence for Silicon & Media"""
 __version__ = "1.0.0"

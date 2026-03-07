@@ -1,4 +1,4 @@
-"""Configuration module for the LLM RAG QA Agent"""
+"""Configuration module for PRISM"""
 import os
 from typing import Optional
 from pydantic_settings import BaseSettings

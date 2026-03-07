@@ -1,7 +1,7 @@
 #!/usr/bin/env pwsh
 <#
 .SYNOPSIS
-    Run test suite for LLM RAG-Powered QA Agent
+    Run test suite for PRISM
 .DESCRIPTION
     Runs pytest with coverage reporting and generates both terminal and HTML reports
 .PARAMETER Coverage
