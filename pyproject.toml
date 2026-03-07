@@ -2,7 +2,7 @@
 name = "prism"
 version = "0.1.0"
 description = "PRISM — Pipeline Root-cause Intelligence for Silicon & Media"
-authors = ["Thomas Wrappe twrappe@gmail.com>"]
+authors = ["Thomas Wrappe <twrappe@gmail.com>"]
 license = "MIT"
 readme = "README.md"
 repository = "https://github.com/twrappe/prism"
