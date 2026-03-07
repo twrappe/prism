@@ -3,8 +3,11 @@ name: CI/CD Pipeline
 on:
   push:
     branches: [ master, main, develop ]
+    tags:
+      - 'v*'
   pull_request:
     branches: [ master, main, develop ]
+  workflow_dispatch:
 
 jobs:
   test:
@@ -128,6 +131,58 @@ jobs:
       with:
         context: .
         push: false
-        tags: llm-rag-qa-agent:latest
+        tags: prism:latest
         cache-from: type=gha
         cache-to: type=gha,mode=max
+
+  release:
+    name: Release v0.1.0
+    runs-on: ubuntu-latest
+    needs: [build-docker]
+    if: startsWith(github.ref, 'refs/tags/v')
+    permissions:
+      contents: write
+
+    steps:
+    - uses: actions/checkout@v6
+
+    - name: Set up Python
+      uses: actions/setup-python@v6
+      with:
+        python-version: '3.11'
+
+    - name: Install build tools
+      run: |
+        python -m pip install --upgrade pip
+        pip install build
+
+    - name: Build distribution packages
+      run: python -m build
+
+    - name: Upload dist artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: dist-${{ github.ref_name }}
+        path: dist/
+
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v2
+      with:
+        name: "PRISM ${{ github.ref_name }}"
+        tag_name: ${{ github.ref_name }}
+        body: |
+          ## PRISM — Pipeline Root-cause Intelligence for Silicon & Media
+
+          Release **${{ github.ref_name }}** — automated build from CI/CD pipeline.
+
+          ### What's included
+          - Python wheel and source distribution (`dist/`)
+          - Docker image built and validated
+
+          ### Install
+          ```bash
+          pip install prism-0.1.0-py3-none-any.whl
+          ```
+        files: dist/*
+        draft: false
+        prerelease: ${{ contains(github.ref_name, 'rc') || contains(github.ref_name, 'alpha') || contains(github.ref_name, 'beta') }}
