@@ -40,9 +40,9 @@ class TestRAGPipeline:
     """Test RAG pipeline"""
     
     @pytest.fixture
-    def rag(self):
-        """Create RAG pipeline instance"""
-        return RAGPipeline()
+    def rag(self, tmp_path):
+        """Create RAG pipeline instance with isolated temp directory"""
+        return RAGPipeline(persist_directory=str(tmp_path / "chroma_db"))
     
     def test_initialization(self, rag):
         """Test RAG pipeline initialization"""
@@ -78,9 +78,10 @@ class TestRCAAgent:
     """Test RCA Agent"""
     
     @pytest.fixture
-    def agent(self):
+    def agent(self, tmp_path):
         """Create RCA agent"""
-        return RCAgent()
+        rag = RAGPipeline(persist_directory=str(tmp_path / "chroma_db"))
+        return RCAgent(rag_pipeline=rag)
     
     def test_initialization(self, agent):
         """Test agent initialization"""

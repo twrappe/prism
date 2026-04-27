@@ -170,9 +170,12 @@ class DocumentProcessor:
 class RAGPipeline:
     """Complete RAG pipeline for CI/CD documentation"""
     
-    def __init__(self):
+    def __init__(self, persist_directory: str = None, collection_name: str = None):
         """Initialize RAG pipeline"""
-        self.db_manager = ChromaDBManager()
+        self.db_manager = ChromaDBManager(
+            persist_directory=persist_directory,
+            collection_name=collection_name,
+        )
         self.doc_processor = DocumentProcessor()
         self.logger = get_logger(__name__)
     

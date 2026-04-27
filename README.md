@@ -1,14 +1,19 @@
 # PRISM — Pipeline Root-cause Intelligence for Silicon & Media
 
+
 > **Intelligent Root Cause Analysis & Remediation for Silicon Validation & CI/CD Pipelines — At Scale**
 
-PRISM cuts root cause analysis time from hours to seconds across distributed silicon validation and CI/CD infrastructure — processing 100–500+ concurrent failures per day through an LLM-powered multi-agent system that correlates failures, retrieves contextual documentation, and delivers prioritized remediations with confidence scores.
+PRISM cuts root cause analysis time from hours to seconds across distributed silicon validation and CI/CD infrastructure — designed to process 100–500+ concurrent failures per day through an LLM-powered multi-agent system that correlates failures, retrieves contextual documentation, and delivers prioritized remediations with confidence scores.
 
 ## 🎯 Project Overview
 
 This system combines **Large Language Models (LLMs)**, **Retrieval-Augmented Generation (RAG)**, and **intelligent agent orchestration** to automate failure triage across large-scale test infrastructure. It is purpose-built for environments where test failures arrive concurrently from many workers—silicon validation farms, multi-node CI clusters, and distributed hardware-in-the-loop rigs—and manual investigation does not scale.
 
-**Target operating environment**: 100–500+ test failures per day, submitted concurrently from N distributed test nodes. The agent consumes logs in async batches, correlates failures across nodes sharing the same silicon revision or driver version, and returns structured RCA + remediation results for every run within seconds of completion.
+**Target operating environment**: 100–500+ test failures per day, submitted concurrently from N distributed test nodes. The system is architected to consume logs in async batches, correlate failures across nodes sharing the same hardware revision or driver version, and return structured RCA + remediation results for every run within seconds of completion.
+
+## 📌 Project Status
+
+PRISM is a research prototype demonstrating multi-agent LLM orchestration for HIL CI/CD failure triage. The architecture, data schemas, and agent flow are fully implemented; throughput numbers reflect design targets, not measured production load. The system is intended as a reference architecture and starting point for production deployment.
 
 ### Key Capabilities
 
@@ -880,7 +885,7 @@ spec:
 | LLM inference | 3-10s | OpenAI API latency |
 | **Batch of 50 logs** | **~90s** | 16 concurrent workers |
 | **Batch of 200 logs** | **~3 min** | 16 concurrent workers |
-| **Daily farm throughput** | **500+ analyses/day** | Single 16-worker deployment |
+| **Designed daily farm capacity** | **500+ analyses/day**  | Single 16-worker deployment |
 | Cross-node correlation | <100ms | In-memory aggregation post-batch |
 
 ### Optimization Tips
